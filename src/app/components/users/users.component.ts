@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
-
 export class User {
   constructor(
     public id: string,
@@ -49,6 +48,9 @@ export class UsersComponent implements OnInit {
 
   users: User[] = [];
   token: string = '';
+  searchValue: string = '';
+  term: string = ' ';
+
   constructor(
     private httpClient: HttpClient
   ) { }

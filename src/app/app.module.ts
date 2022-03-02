@@ -9,6 +9,9 @@ import { HttpClientModule } from '@angular/common/http'
 import { RouterModule, Routes } from '@angular/router';
 import { UsersComponent } from './components/users/users.component';
 import { AbsencesComponent } from './components/absences/absences.component';
+import { FormsModule } from '@angular/forms';
+import { Ng2SearchPipe, Ng2SearchPipeModule } from 'ng2-search-filter';
+import { SearchfilterPipe } from './searchfilter.pipe';
 
 const appRoutes: Routes = [
   {
@@ -23,12 +26,15 @@ const appRoutes: Routes = [
     AppComponent,
     HeaderComponent,
     SettingsComponent,
-    UsersComponent
+    UsersComponent,
+    SearchfilterPipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    Ng2SearchPipeModule,
     RouterModule.forRoot(appRoutes, { enableTracing: true }),
   ],
   providers: [],

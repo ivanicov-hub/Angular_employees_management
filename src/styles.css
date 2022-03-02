@@ -4,7 +4,8 @@ body {
 
 .container{
     width: 98%;
-    border: 2px solid #f00;
+    border: 2px solid lightgray;
+    background-color: lightblue;
     padding: 10px;
   }
 
