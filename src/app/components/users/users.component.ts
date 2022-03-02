@@ -8,11 +8,13 @@ export class User {
     public FirstName: string,
     public LastName: string,
     public MiddleName: string,
+    public FullName: string,
     public BirthDate: Date,
     public Address: string,
     public City: string,
     public State: string,
     public Phone: string,
+    public Mobile: string,
     public Email: string,
     public Gender: string,
     public PictureUri: string,
@@ -86,6 +88,7 @@ export class UsersComponent implements OnInit {
           console.log(response);
           (err: any) => console.log(err);
           this.users = response;
+          console.log(JSON.stringify(this.users) + 'madona')
         }
       );
   }

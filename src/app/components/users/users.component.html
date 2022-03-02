@@ -1,3 +1,36 @@
-<div class="container">
-    <p>users works!</p>
-</div>
+<h1> Users </h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Email</th>
+            <th>Full name</th>
+            <th>Time Attendance</th>
+            <th>Archived</th>
+            <th>User account</th>
+            <th>Calculation start date</th>
+            <th>Calculation stop date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-template #other_content [ngStyle]="{'background-color': 'lightgray'}">no</ng-template>
+        <tr *ngFor="let user of users">
+            <td class="td">{{ user.FirstName }}</td>
+            <td class="td">{{ user.LastName }}</td>
+            <td class="td">{{ user.Email }}</td>
+            <td class="td">{{ user.FullName }}</td>
+            <td class="td">{{ user.IsTimeAttendanceUser }}</td>
+            <td class="td">{{ user.IsArchived }}</td>
+            <td class="td"> {{ user.HasUserAccount }} </td>
+            <td class="td"> {{ user.CalculationStartDate }} </td>
+            <td class="td"> {{ user.CalculationStopDate }} </td>
+            <!-- <td class="td" *ngIf="user.IsTimeAttendanceUser; else other_content"> yes </td>
+            <td class="td" *ngIf="user.IsArchived; else other_content"> yes </td>
+            <td class="td" *ngIf="user.HasUserAccount; else other_content"> yes </td>
+            <td class="td" *ngIf="user.CalculationStartDate; else other_content"> yes </td>
+            <td class="td" *ngIf="user.CalculationStopDate; else other_content"> yes</td> -->
+        </tr>
+    </tbody>
+</table>
