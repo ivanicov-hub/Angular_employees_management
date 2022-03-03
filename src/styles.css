@@ -19,3 +19,27 @@ body {
     grid-row-gap: 0.5em;
     background: lightgray;
   }
+
+  .button {
+    background-color: rgb(29, 28, 48); /* Green */
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    margin: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+    transition-duration: 0.4s;
+  }
+
+  .button:hover {
+    background-color: white; /* Green */
+    color: black;
+  }
+
+  .td {
+    background: lightgray;
+    padding: 5px;
+}

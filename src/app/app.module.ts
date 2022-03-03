@@ -12,13 +12,14 @@ import { AbsencesComponent } from './components/absences/absences.component';
 import { FormsModule } from '@angular/forms';
 import { Ng2SearchPipe, Ng2SearchPipeModule } from 'ng2-search-filter';
 import { SearchfilterPipe } from './searchfilter.pipe';
+import { CommonModule } from '@angular/common';
 
 const appRoutes: Routes = [
   {
     path: 'users', component: UsersComponent
   },
   {
-    path: 'users', component: AbsencesComponent
+    path: 'absences', component: AbsencesComponent
   }
 ]
 @NgModule({
@@ -31,6 +32,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,

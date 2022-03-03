@@ -1,1 +1,27 @@
-<p>absences works!</p>
+<div class="container">
+    Enter date in format yyyy-mm-dd(e.g. 2022-02-18)
+    <div class="search-bar">
+        <input type="text" id="date" name="date" #date placeholder="Write a date..">
+        <button class="button" (click)="findAbsenceByDate(date.value)">Search</button>
+    </div>
+</div>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Absence date</th>
+            <th>Absence category</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of absence_users">
+            <td class="td">{{ user.name }}</td>
+            <td class="td">{{ user.surname }}</td>
+            <td class="td">{{ user.date }}</td>
+            <td class="td">{{ user.IsTimeAttendanceUser }}</td>
+        </tr>
+    </tbody>
+</table>
