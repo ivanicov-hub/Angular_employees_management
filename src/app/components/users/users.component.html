@@ -6,6 +6,16 @@
     </div>
 </div>
 
+<br>
+<div class="container">
+    <form #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value, token)">
+        Name: <input type="text" name="FirstName" ngModel>
+        Surname: <input type="text" name="LastName" ngModel>
+        Email: <input type="text" name="Email" ngModel>
+        <button class="button" type="submit"> Add user</button>
+    </form>
+
+</div>
 <table class="table table-striped">
     <thead>
         <tr>
