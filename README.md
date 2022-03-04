@@ -6,5 +6,6 @@
 * cd Angular_employees_management
 * git checkout master
 * code . (opens the project in VScode)
+* open the terminal in VScode
 * npm install
 * ng serve -o
