@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from '../users/users.component';
-import { elementAt } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 export class Absence {
   constructor(
@@ -112,7 +111,7 @@ export class AbsencesComponent implements OnInit {
     this.httpClient.get<any>('https://api4.allhours.com/api/v1/Absences',
       { headers: new HttpHeaders({ 'authorization': 'Bearer ' + extract_token, 'content-type': 'application/json' }) }).subscribe(
         response => {
-          console.log(response);
+          //console.log(response);
           (err: any) => console.log(err);
           this.absences = response;
           console.log(JSON.stringify(this.absences) + 'madona')
@@ -124,10 +123,10 @@ export class AbsencesComponent implements OnInit {
     this.httpClient.get<any>('https://api4.allhours.com/api/v1/AbsenceDefinitions',
       { headers: new HttpHeaders({ 'authorization': 'Bearer ' + extract_token, 'content-type': 'application/json' }) }).subscribe(
         response => {
-          console.log(response);
+          //console.log(response);
           (err: any) => console.log(err);
           this.absenceDef = response;
-          console.log(JSON.stringify(this.absenceDef) + 'madona')
+          //console.log(JSON.stringify(this.absenceDef) + 'madona')
         }
       );
   }
@@ -141,7 +140,7 @@ export class AbsencesComponent implements OnInit {
         //console.log(element.FirstName + ' ' + element.LastName);
         var absence_data = new AbsenceUserInfo(element.FirstName, element.LastName, str_date, element.AbsenceDefinitionId);
         this.absence_users.push(absence_data);
-        console.log(this.absence_users);
+        console.log(JSON.stringify(this.absence_users));
         this.getAbsenceDefinitionInfo(element.AbsenceDefinitionId);
       }
     });

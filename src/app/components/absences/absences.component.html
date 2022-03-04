@@ -17,11 +17,11 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let user of absence_users">
-            <td class="td">{{ user.name }}</td>
-            <td class="td">{{ user.surname }}</td>
-            <td class="td">{{ user.date }}</td>
-            <td class="td">{{ user.IsTimeAttendanceUser }}</td>
+        <tr *ngFor="let abs_user of absence_users">
+            <td class="td">{{ abs_user.name }}</td>
+            <td class="td">{{ abs_user.surname }}</td>
+            <td class="td">{{ abs_user.date }}</td>
+            <td class="td">{{ abs_user.IsTimeAttendanceUser }}</td>
         </tr>
     </tbody>
 </table>
