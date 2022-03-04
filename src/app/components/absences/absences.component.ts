@@ -1,7 +1,5 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 export class Absence {
   constructor(
@@ -79,6 +77,7 @@ export class AbsencesComponent implements OnInit {
   token: string = '';
   absence_users: AbsenceUserInfo[] = [];
   absence_users_index: number = 0;
+  is_date_valid: boolean = true;
 
   constructor(
     private httpClient: HttpClient
@@ -132,21 +131,28 @@ export class AbsencesComponent implements OnInit {
   }
 
   findAbsenceByDate(date: string) {
-    this.absence_users.splice(0, this.absence_users.length);
-    this.absence_users_index = 0;
+    if (this.isValidDate(date)) {
+      this.is_date_valid = true;
+      this.absence_users.splice(0, this.absence_users.length);
+      this.absence_users_index = 0;
 
-    this.absences.forEach(element => {
-      var split_date = element.Timestamp.split('T', 1);
-      var str_date = split_date.toString();
-      if (str_date === date) {
-        var absence_data = new AbsenceUserInfo(element.FirstName, element.LastName,
-          str_date, element.AbsenceDefinitionId, element.Comment);
-        this.absence_users.push(absence_data);
-        this.getAbsenceDefinitionInfo(element.AbsenceDefinitionId, this.absence_users_index);
-        this.absence_users_index++;
-      }
-    });
-    //console.log(JSON.stringify(this.absence_users));
+      this.absences.forEach(element => {
+        var split_date = element.Timestamp.split('T', 1);
+        var str_date = split_date.toString();
+        if (str_date === date) {
+          var absence_data = new AbsenceUserInfo(element.FirstName, element.LastName,
+            str_date, element.AbsenceDefinitionId, element.Comment);
+          this.absence_users.push(absence_data);
+          this.getAbsenceDefinitionInfo(element.AbsenceDefinitionId, this.absence_users_index);
+          this.absence_users_index++;
+        }
+      });
+    }
+    else {
+      this.is_date_valid = false;
+      this.absence_users.splice(0, this.absence_users.length);
+      this.absence_users_index = 0;
+    }
   }
   //2022-02-18
   getAbsenceDefinitionInfo(absence_id: string, index: number) {
@@ -160,4 +166,12 @@ export class AbsencesComponent implements OnInit {
     });
   }
 
+  isValidDate(dateString: string) {
+    var regEx = /^\d{4}-\d{2}-\d{2}$/;
+    if (!dateString.match(regEx)) return false;  // Invalid format
+    var d = new Date(dateString);
+    var dNum = d.getTime();
+    if (!dNum && dNum !== 0) return false; // NaN value, Invalid date
+    return d.toISOString().slice(0, 10) === dateString;
+  }
 }
