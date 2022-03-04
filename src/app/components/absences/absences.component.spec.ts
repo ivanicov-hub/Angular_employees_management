@@ -2,8 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AbsencesComponent } from './absences.component';
 
-import { CommonModule } from '@angular/common';
-
 describe('AbsencesComponent', () => {
   let component: AbsencesComponent;
   let fixture: ComponentFixture<AbsencesComponent>;

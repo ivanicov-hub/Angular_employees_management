@@ -6,7 +6,6 @@
     </div>
 </div>
 
-
 <table class="table table-striped">
     <thead>
         <tr>
@@ -14,6 +13,9 @@
             <th>Last name</th>
             <th>Absence date</th>
             <th>Absence category</th>
+            <th>Comment</th>
+            <th>Integration Id</th>
+            <th>Code</th>
         </tr>
     </thead>
     <tbody>
@@ -21,7 +23,11 @@
             <td class="td">{{ abs_user.name }}</td>
             <td class="td">{{ abs_user.surname }}</td>
             <td class="td">{{ abs_user.date }}</td>
-            <td class="td">{{ abs_user.IsTimeAttendanceUser }}</td>
+            <td class="td">{{ abs_user.catDefinitionName }}</td>
+            <td class="td">{{ abs_user.comment }}</td>
+            <td class="td">{{ abs_user.integrationId }}</td>
+            <td class="td">{{ abs_user.code }}</td>
+
         </tr>
     </tbody>
 </table>

@@ -28,6 +28,7 @@ const appRoutes: Routes = [
     HeaderComponent,
     SettingsComponent,
     UsersComponent,
+    AbsencesComponent,
     SearchfilterPipe,
   ],
   imports: [

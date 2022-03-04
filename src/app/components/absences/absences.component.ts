@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 export class Absence {
   constructor(
@@ -56,26 +57,28 @@ export class AbsenceUserInfo {
     public surname: string,
     public date: string,
     public absDefinitionsId: string,
-    //public catDefinitionName?: string,
+    public comment: string,
+    public catDefinitionName?: string,
+    public integrationId?: number,
+    public code?: number,
   ) {
 
   }
 }
-
-
 
 @Component({
   selector: 'app-absences',
   templateUrl: './absences.component.html',
   styleUrls: ['./absences.component.css']
 })
+
 export class AbsencesComponent implements OnInit {
 
   absences: Absence[] = [];
   absenceDef: AbsenceDefinitions[] = [];
   token: string = '';
   absence_users: AbsenceUserInfo[] = [];
-  //absence_info: AbsenceInformation[] = [];
+  absence_users_index: number = 0;
 
   constructor(
     private httpClient: HttpClient
@@ -111,7 +114,6 @@ export class AbsencesComponent implements OnInit {
     this.httpClient.get<any>('https://api4.allhours.com/api/v1/Absences',
       { headers: new HttpHeaders({ 'authorization': 'Bearer ' + extract_token, 'content-type': 'application/json' }) }).subscribe(
         response => {
-          //console.log(response);
           (err: any) => console.log(err);
           this.absences = response;
           console.log(JSON.stringify(this.absences) + 'madona')
@@ -123,36 +125,39 @@ export class AbsencesComponent implements OnInit {
     this.httpClient.get<any>('https://api4.allhours.com/api/v1/AbsenceDefinitions',
       { headers: new HttpHeaders({ 'authorization': 'Bearer ' + extract_token, 'content-type': 'application/json' }) }).subscribe(
         response => {
-          //console.log(response);
           (err: any) => console.log(err);
           this.absenceDef = response;
-          //console.log(JSON.stringify(this.absenceDef) + 'madona')
         }
       );
   }
 
   findAbsenceByDate(date: string) {
-    //console.log(JSON.stringify(this.absences));
+    this.absence_users.splice(0, this.absence_users.length);
+    this.absence_users_index = 0;
+
     this.absences.forEach(element => {
       var split_date = element.Timestamp.split('T', 1);
       var str_date = split_date.toString();
       if (str_date === date) {
-        //console.log(element.FirstName + ' ' + element.LastName);
-        var absence_data = new AbsenceUserInfo(element.FirstName, element.LastName, str_date, element.AbsenceDefinitionId);
+        var absence_data = new AbsenceUserInfo(element.FirstName, element.LastName,
+          str_date, element.AbsenceDefinitionId, element.Comment);
         this.absence_users.push(absence_data);
-        console.log(JSON.stringify(this.absence_users));
-        this.getAbsenceDefinitionInfo(element.AbsenceDefinitionId);
+        this.getAbsenceDefinitionInfo(element.AbsenceDefinitionId, this.absence_users_index);
+        this.absence_users_index++;
       }
     });
-
+    //console.log(JSON.stringify(this.absence_users));
   }
   //2022-02-18
-  getAbsenceDefinitionInfo(absence_id: string) {
+  getAbsenceDefinitionInfo(absence_id: string, index: number) {
     this.absenceDef.forEach(element => {
       if (element.Id === absence_id) {
         console.log(element.CategoryDefinitionName);
-        //var absence = new AbsenceInformation(element.)
+        this.absence_users[index].catDefinitionName = element.CategoryDefinitionName;
+        this.absence_users[index].integrationId = element.IntegrationId;
+        this.absence_users[index].code = element.Code;
       }
     });
   }
+
 }
