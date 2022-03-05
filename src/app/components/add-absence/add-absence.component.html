@@ -1,5 +1,4 @@
-<h3> Child says: {{user_data.id}}</h3>
-<h1> Type of absences </h1>
+<h3> Choose type of absences </h3>
 
 <table class="table table-striped">
     <thead>
@@ -26,7 +25,7 @@
     </tbody>
 </table>
 <br />
-<textarea [ngModel]="comment"></textarea>
 <div>
-    <button class="button" (click)="onSubmit()">Save</button>
+    <textarea cols="30" rows="4" [(ngModel)]="comment" #txtarea></textarea>
 </div>
+<button class="button" (click)="onSubmit(txtarea.value)">Save</button>

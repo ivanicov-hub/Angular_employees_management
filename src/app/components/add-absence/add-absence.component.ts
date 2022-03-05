@@ -67,7 +67,6 @@ export class AddAbsenceComponent implements OnInit {
 
   ngOnInit(): void {
     this.user_data = this.shared.getMessage();
-    console.log('MADONA' + JSON.stringify(this.user_data.FirstName));
     this.postAuthentication();
   }
 
@@ -99,7 +98,7 @@ export class AddAbsenceComponent implements OnInit {
         response => {
           (err: any) => console.log(err);
           this.absenceDef = response;
-          console.log(JSON.stringify(this.absenceDef));
+          //console.log(JSON.stringify(this.absenceDef));
         }
       );
   }
@@ -117,11 +116,11 @@ export class AddAbsenceComponent implements OnInit {
     this.httpClient.post('https://api4.allhours.com/api/v1/Absences', data,
       { headers: new HttpHeaders({ 'authorization': 'Bearer ' + ext_token, 'content-type': 'application/json' }) })
       .subscribe((result) => {
-        console.log('result ', result)
+        //console.log('result ', result)
       })
   }
 
-  onSubmit() {
+  onSubmit(comment: string) {
     let body = new URLSearchParams();
     body.set('grant_type', "client_credentials");
     // @ts-ignore: Object is possibly 'null'
@@ -137,6 +136,7 @@ export class AddAbsenceComponent implements OnInit {
           extract_token = response["access_token"];
           (err: any) => console.log(err);
           this.token = extract_token;
+          this.user_data.Comment = comment;
           this.addAbsence(this.user_data, extract_token)
         }
       );
