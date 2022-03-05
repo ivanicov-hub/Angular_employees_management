@@ -1,5 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { SharedService } from 'src/app/services/shared.service';
 
 export class User {
   constructor(
@@ -52,7 +54,9 @@ export class UsersComponent implements OnInit {
   term: string = ' ';
 
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private router: Router,
+    private shared: SharedService,
   ) { }
 
   ngOnInit(): void {
@@ -123,6 +127,14 @@ export class UsersComponent implements OnInit {
         }
       );
   }
+
+  getSelectedUser(selectedItem: any) {
+    console.log("Selected user Id: ", selectedItem.Id);
+    this.shared.setMessage(selectedItem);
+    this.router.navigate(['add-absence'])
+  }
 }
+
+
 
 

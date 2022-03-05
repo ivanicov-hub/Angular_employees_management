@@ -31,7 +31,7 @@
         </tr>
     </thead>
     <tbody>
-        <ng-template #other_content [ngStyle]="{'background-color': 'lightgray'}">no</ng-template>
+        <!-- <ng-template #other_content [ngStyle]="{'background-color': 'lightgray'}">no</ng-template> -->
         <tr *ngFor="let user of users | searchfilter:searchValue">
             <td class="td">{{ user.FirstName }}</td>
             <td class="td">{{ user.LastName }}</td>
@@ -42,6 +42,7 @@
             <td class="td"> {{ user.HasUserAccount }} </td>
             <td class="td"> {{ user.CalculationStartDate }} </td>
             <td class="td"> {{ user.CalculationStopDate }} </td>
+            <button type="button" (click)="getSelectedUser(user)" class="button">Add absence</button>
             <!-- <td class="td" *ngIf="user.IsTimeAttendanceUser; else other_content"> yes </td>
             <td class="td" *ngIf="user.IsArchived; else other_content"> yes </td>
             <td class="td" *ngIf="user.HasUserAccount; else other_content"> yes </td>

@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { Ng2SearchPipe, Ng2SearchPipeModule } from 'ng2-search-filter';
 import { SearchfilterPipe } from './searchfilter.pipe';
 import { CommonModule } from '@angular/common';
+import { AddAbsenceComponent } from './components/add-absence/add-absence.component';
 
 const appRoutes: Routes = [
   {
@@ -20,6 +21,9 @@ const appRoutes: Routes = [
   },
   {
     path: 'absences', component: AbsencesComponent
+  },
+  {
+    path: 'add-absence', component: AddAbsenceComponent
   }
 ]
 @NgModule({
@@ -29,7 +33,9 @@ const appRoutes: Routes = [
     SettingsComponent,
     UsersComponent,
     AbsencesComponent,
+    AddAbsenceComponent,
     SearchfilterPipe,
+    AddAbsenceComponent,
   ],
   imports: [
     BrowserModule,
