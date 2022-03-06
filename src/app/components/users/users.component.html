@@ -1,11 +1,13 @@
-<h1> Users </h1>
-
-<div class="container">
-    <div class="search-bar">
-        <input type="text" [(ngModel)]="searchValue" placeholder="Search..">
-    </div>
+<div class="jumbotron text-center">
+    <h1> Employees </h1>
 </div>
 
+<div class="search-box">
+    <input class="search-txt" type="text" [(ngModel)]="searchValue" placeholder="Search..">
+    <a class="search-btn">
+        <i class="fas fa-search"></i>
+    </a>
+</div>
 <br>
 <div class="container">
     <form #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value, token)">
