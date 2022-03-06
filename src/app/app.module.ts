@@ -14,6 +14,7 @@ import { Ng2SearchPipe, Ng2SearchPipeModule } from 'ng2-search-filter';
 import { SearchfilterPipe } from './searchfilter.pipe';
 import { CommonModule } from '@angular/common';
 import { AddAbsenceComponent } from './components/add-absence/add-absence.component';
+import { AboutComponent } from './components/about/about.component';
 
 const appRoutes: Routes = [
   {
@@ -24,6 +25,9 @@ const appRoutes: Routes = [
   },
   {
     path: 'add-absence', component: AddAbsenceComponent
+  },
+  {
+    path: 'about', component: AboutComponent
   }
 ]
 @NgModule({
@@ -36,6 +40,7 @@ const appRoutes: Routes = [
     AddAbsenceComponent,
     SearchfilterPipe,
     AddAbsenceComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,

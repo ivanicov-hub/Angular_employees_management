@@ -1,7 +1,8 @@
-<h3> Choose type of absences </h3>
+<br>
+<h3> Choose type of absence </h3>
 
-<table class="table table-striped">
-    <thead>
+<table class="table">
+    <thead class="thead-dark">
         <tr>
             <th>Name</th>
             <th>IntegrationId</th>
@@ -25,7 +26,10 @@
     </tbody>
 </table>
 <br />
-<div>
-    <textarea cols="30" rows="4" [(ngModel)]="comment" #txtarea></textarea>
+<div class="form-group shadow-textarea">
+    <label style="margin-left: 30px;" for="exampleFormControlTextarea6">Comment</label>
+    <textarea rows="5" [(ngModel)]="comment" #txtarea class="form-control z-depth-1" id="exampleFormControlTextarea6"
+        placeholder="Write a comment here..." style="width: 500px; margin-left: 30px;"></textarea>
+    <button class="btn btn-dark" style="margin-left: 440px; margin-top: 20px;"
+        (click)="onSubmit(txtarea.value)">Save</button>
 </div>
-<button class="button" (click)="onSubmit(txtarea.value)">Save</button>

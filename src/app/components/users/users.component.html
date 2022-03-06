@@ -9,8 +9,6 @@
     </a>
 </div>
 <br />
-<br />
-<br />
 
 
 <form class="form-inline justify-content-center" #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value, token)">
@@ -25,41 +23,40 @@
     </div>
     <button class="btn btn-dark" type="submit"> Add user</button>
 </form>
+<br>
 
-
-
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Email</th>
-            <th>Full name</th>
-            <th>Time Attendance</th>
-            <th>Archived</th>
-            <th>User account</th>
-            <th>Calculation start date</th>
-            <th>Calculation stop date</th>
-        </tr>
-    </thead>
-    <tbody>
-        <!-- <ng-template #other_content [ngStyle]="{'background-color': 'lightgray'}">no</ng-template> -->
-        <tr *ngFor="let user of users | searchfilter:searchValue">
-            <td class="td">{{ user.FirstName }}</td>
-            <td class="td">{{ user.LastName }}</td>
-            <td class="td">{{ user.Email }}</td>
-            <td class="td">{{ user.FullName }}</td>
-            <td class="td">{{ user.IsTimeAttendanceUser }}</td>
-            <td class="td">{{ user.IsArchived }}</td>
-            <td class="td"> {{ user.HasUserAccount }} </td>
-            <td class="td"> {{ user.CalculationStartDate }} </td>
-            <td class="td"> {{ user.CalculationStopDate }} </td>
-            <button type="button" (click)="getSelectedUser(user)" class="button">Add absence</button>
-            <!-- <td class="td" *ngIf="user.IsTimeAttendanceUser; else other_content"> yes </td>
+<div>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">First name</th>
+                <th scope="col">Last name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Full name</th>
+                <!-- <th scope="col">Time Attendance</th>
+                <th scope="col">Archived</th>
+                <th scope="col">User account</th>
+                <th scope="col">Calculation start date</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <ng-template #other_content [ngStyle]="{'background-color': 'lightgray'}">no</ng-template>
+            <tr *ngFor="let user of users | searchfilter:searchValue">
+                <td scope="row" class="td">{{ user.FirstName }}</td>
+                <td scope="row" class="td">{{ user.LastName }}</td>
+                <td class="td">{{ user.Email }}</td>
+                <td class="td">{{ user.FullName }}</td>
+                <button style="margin-left: 20px;" (click)="getSelectedUser(user)" class="btn btn-dark">Add
+                    absence</button>
+                <!-- <td class="td">{{ user.IsTimeAttendanceUser }}</td>
+                <td class="td">{{ user.IsArchived }}</td>
+                <td class="td"> {{ user.HasUserAccount }} </td>
+                <td class="td"> {{ user.CalculationStartDate }} </td> -->
+                <!-- <td class="td" *ngIf="user.IsTimeAttendanceUser; else other_content"> yes </td>
             <td class="td" *ngIf="user.IsArchived; else other_content"> yes </td>
             <td class="td" *ngIf="user.HasUserAccount; else other_content"> yes </td>
             <td class="td" *ngIf="user.CalculationStartDate; else other_content"> yes </td>
             <td class="td" *ngIf="user.CalculationStopDate; else other_content"> yes</td> -->
-        </tr>
-    </tbody>
-</table>
+            </tr>
+        </tbody>
+    </table>

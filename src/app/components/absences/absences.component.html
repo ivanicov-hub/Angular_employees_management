@@ -1,15 +1,17 @@
-<div class="container">
-    <p style="font-size:20px;">Enter date in format yyyy-mm-dd(e.g. 2022-02-18)</p>
-    <div class="search-bar">
-        <input type="text" id="date" name="date" #date placeholder="Write a date..">
-        <button class="button" (click)="findAbsenceByDate(date.value)">Search</button>
-    </div>
-    <p *ngIf="!is_date_valid" style="color: red; font-size:20px;">Please enter valid date!</p>
+<br>
+
+<p class="center-paragraph" style="font-size:25px;">Enter date in format yyyy-mm-dd(e.g. 2022-02-28)</p>
+<br>
+<div class="search-box">
+    <input class="search-txt" id="date" name="date" #date type="text" placeholder="Search..">
+    <a class="search-btn" (click)="findAbsenceByDate(date.value)">
+        <i class="fas fa-search"></i>
+    </a>
 </div>
+<p class="center-notify" *ngIf="!is_date_valid" style="color: red; font-size:30px;">Please enter valid date!</p>
 
-
-<table class="table table-striped">
-    <thead>
+<table class="table">
+    <thead class="thead-dark">
         <tr>
             <th>First name</th>
             <th>Last name</th>

@@ -6,8 +6,7 @@ body {
 }
 
 .search-box {
-  position: absolute;
-  top: 17.5%;
+  position: relative;
   left: 50%;
   transform: translate(-50%, -50%);
   background: #2f3640;
@@ -84,4 +83,14 @@ body {
   .td {
     background: lightgray;
     padding: 5px;
+}
+
+.center-paragraph {
+  position: relative;
+  left: 38.5%;
+}
+
+.center-notify {
+  position: relative;
+  left: 43%;
 }

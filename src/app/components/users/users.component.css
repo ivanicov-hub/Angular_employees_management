@@ -16,3 +16,10 @@
     min-width: 100px;
 }
 
+tbody>tr>:nth-child(5){
+    background-color: rgb(41, 41, 51);
+    width:110px;
+    height: 50px;
+    text-align:center;
+   }
+
